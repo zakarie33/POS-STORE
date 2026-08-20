@@ -1,0 +1,423 @@
+/* Specialized CSS for the POS Interface */
+
+.pos-container {
+    display: flex;
+    height: calc(100vh - 70px); /* Minus header */
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+/* Left Panel: Products List */
+.pos-products {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    background: var(--bg-color);
+    position: relative;
+}
+
+.pos-search-bar {
+    padding: 1rem;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 1rem;
+    z-index: 5;
+}
+
+.pos-search-bar .input-group {
+    flex: 1;
+    position: relative;
+}
+
+.pos-search-bar .input-group i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.pos-search-bar .form-control {
+    padding-left: 2.5rem;
+    height: 48px;
+    font-size: 1rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.products-grid {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+    align-content: start;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.product-card:active {
+    transform: translateY(0);
+}
+
+.product-code {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: var(--bg-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+}
+
+.product-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: auto;
+}
+
+.stock-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: var(--radius-full);
+    background: var(--success-light);
+    color: var(--success-color);
+}
+.stock-badge.low {
+    background: var(--warning-light);
+    color: var(--warning-color);
+}
+
+/* Right Panel: Cart */
+.pos-cart {
+    width: 380px;
+    background: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed var(--border-color);
+    animation: fadeIn 0.2s ease-out;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.cart-item-price {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.qty-btn:hover {
+    background: var(--border-color);
+}
+
+.qty-input {
+    width: 40px;
+    height: 28px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cart-item-total {
+    font-weight: 700;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.cart-item-remove {
+    color: var(--danger-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.25rem;
+    margin-left: 0.5rem;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+}
+
+.cart-item-remove:hover {
+    opacity: 1;
+}
+
+.cart-summary {
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.summary-row.total {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px dashed var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-lg);
+}
+
+/* Modal Checkout */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(20px);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-method-card {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.payment-method-card:hover {
+    border-color: var(--primary-light);
+    background: var(--bg-color);
+}
+
+.payment-method-card.selected {
+    border-color: var(--primary-color);
+    background: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.payment-method-card i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.payment-method-card span {
+    display: block;
+    font-weight: 600;
+}
+
+.amount-input-group {
+    margin-bottom: 1.5rem;
+}
+
+.amount-input-group .form-control {
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: right;
+    font-family: monospace;
+}
+
+.change-display {
+    text-align: right;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--success-color);
+    margin-bottom: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+@media (max-width: 992px) {
+    .pos-container {
+        flex-direction: column;
+    }
+    .pos-cart {
+        width: 100%;
+        height: 50vh;
+        border-top: 1px solid var(--border-color);
+    }
+}
